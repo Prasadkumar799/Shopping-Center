@@ -1,0 +1,74 @@
+<configuration>
+
+<appender name="rollingFileAppender" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/application.log</file>
+
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>logs/application.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            
+            <maxFileSize>10MB</maxFileSize>
+            
+            <maxHistory>30</maxHistory>
+            
+            <totalSizeCap>3GB</totalSizeCap>
+        </rollingPolicy>
+
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} %-5level %logger{36} - %msg 
+            					[Method : %X{method}] 
+            					[Product Name : %X{productName}]
+            					[Product Id : %X{productId}]
+            					[Category Id : %X{categoryId}]
+            					[Seller Id : %X{sellerId}]
+            					[User Id : %X{userId}]
+            					[Email : %X{email}]
+            					[Review Id : %X{reviewId}]
+            					[Payment Id : %X{paymentId}]
+            					[Order Id : %X{orderId}]
+            					[Order Details Id : %X{orderDetailsId}]
+            					[Notification Id : %X{notificationId}]
+            					[Favorite Id : %X{favoriteId}]
+            					[Cart Id : %X{cartId}]
+            					%n</pattern>
+        </encoder>
+    </appender>
+
+
+
+
+    <logger name="dao.ProductsDAOClass" level="debug" additivity="false">
+        <appender-ref ref="fileAppender" />
+    </logger>
+     <logger name="dao.CartDAOClass" level="debug" additivity="false">
+        <appender-ref ref="fileAppender" />
+    </logger>
+     <logger name="dao.CategoryDAOClass" level="debug" additivity="false">
+        <appender-ref ref="fileAppender" />
+    </logger>
+     <logger name="dao.FavoritesDAOClass" level="debug" additivity="false">
+        <appender-ref ref="fileAppender" />
+    </logger>
+     <logger name="dao.ReviewsDAOClass" level="debug" additivity="false">
+        <appender-ref ref="fileAppender" />
+    </logger>
+     <logger name="dao.OrderDetailsDAOClass" level="debug" additivity="false">
+        <appender-ref ref="fileAppender" />
+    </logger>
+     <logger name="dao.OrdersDAOClass" level="debug" additivity="false">
+        <appender-ref ref="fileAppender" />
+    </logger>
+     <logger name="dao.RegistrationDAOClass" level="debug" additivity="false">
+        <appender-ref ref="fileAppender" />
+    </logger>
+     
+     <logger name="dao.SellersDaoClass" level="debug" additivity="false">
+        <appender-ref ref="fileAppender" />
+    </logger>
+     
+
+
+    <root level="info">
+        <appender-ref ref="rollingFileAppender" />
+    </root>
+
+</configuration>
